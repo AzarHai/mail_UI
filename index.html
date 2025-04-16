@@ -315,6 +315,28 @@
 </form>
 <script src="main_buttons.js"></script>
 <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const writeModal = document.getElementById('writeModal');
+        const recipientInput = document.getElementById('recipient');
+        const subjectInput = document.getElementById('subject');
+        const messageTextarea = document.getElementById('message');
+        const fileInput = document.getElementById('fileInput');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        const photoPreview = document.getElementById('photoPreview');
+        const photoPreviewContainer = document.getElementById('photoPreviewContainer');
+
+        // Очистка полей при закрытии модального окна
+        writeModal.addEventListener('hidden.bs.modal', function () {
+            recipientInput.value = '';
+            subjectInput.value = '';
+            messageTextarea.value = '';
+            fileInput.value = '';
+            fileNameDisplay.textContent = '';
+            photoPreview.src = '';
+            photoPreview.style.display = 'none';
+            photoPreviewContainer.style.display = 'none';
+        });
+    });
     document.addEventListener('DOMContentLoaded', function () {
         const sidebar = document.getElementById('sidebar');
         const tabs = sidebar.querySelectorAll('.nav-link');
@@ -328,7 +350,8 @@
             { id: 3, subject: 'Отправленное письмо 1', sender: 'sender3@example.com', content: 'Это содержимое отправленного письма 1.' },
             { id: 4, subject: 'Черновик 1', sender: 'sender4@example.com', content: 'Это содержимое черновика 1.' },
             { id: 5, subject: 'Спам письмо 1', sender: 'sender5@example.com', content: 'Это содержимое письма из спама.' },
-            { id: 6, subject: 'Удаленное письмо 1', sender: 'sender6@example.com', content: 'Это содержимое удаленного письма 1.' }
+            { id: 6, subject: 'Счет за март', sender: 'sender7@example.com', content: 'Это содержимое письма является пасхалкой.' },
+            { id: 7, subject: 'Удаленное письмо 1', sender: 'sender6@example.com', content: 'Это содержимое удаленного письма 1.' }
         ];
     
         function updateMailList(folderId) {
@@ -350,9 +373,9 @@
                     filtered = mails.filter(m => m.id === 4);
                     break;
                 case 'spamTab':
-                    folderTitle.textContent = 'Спам';
-                    filtered = mails.filter(m => m.id === 5);
-                    break;
+                        folderTitle.textContent = 'Спам';
+                        filtered = mails.filter(m => [5, 6].includes(m.id));
+                        break;
                 case 'trashTab':
                     folderTitle.textContent = 'Удаленные';
                     filtered = mails.filter(m => m.id === 6);

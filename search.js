@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
             3: { subject: 'Отправленное письмо 1', sender: 'sender3@example.com', content: 'Это содержимое отправленного письма 1.' },
             4: { subject: 'Черновик 1', sender: 'sender4@example.com', content: 'Это содержимое черновика 1.' },
             5: { subject: 'Спам письмо 1', sender: 'sender5@example.com', content: 'Это содержимое письма из спама.' },
-            6: { subject: 'Удаленное письмо 1', sender: 'sender6@example.com', content: 'Это содержимое удаленного письма 1.' }
+            6: { subject: 'Спам письмо 2', sender: 'sender5@example.com', content: 'Это содержимое письма из спама.' },
+            7: { subject: 'Удаленное письмо 1', sender: 'sender6@example.com', content: 'Это содержимое удаленного письма 1.' }
         };
 
         const mail = mails[mailId];
@@ -124,7 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 3, subject: 'Отправленное письмо 1', sender: 'sender3@example.com', content: 'Это содержимое отправленного письма 1.' },
         { id: 4, subject: 'Черновик 1', sender: 'sender4@example.com', content: 'Это содержимое черновика 1.' },
         { id: 5, subject: 'Спам письмо 1', sender: 'sender5@example.com', content: 'Это содержимое письма из спама.' },
-        { id: 6, subject: 'Удаленное письмо 1', sender: 'sender6@example.com', content: 'Это содержимое удаленного письма 1.' }
+        {id: 6, subject: 'Спам письмо 2', sender: 'sender5@example.com', content: 'Это содержимое письма из спама.' },
+        { id: 7, subject: 'Удаленное письмо 1', sender: 'sender6@example.com', content: 'Это содержимое удаленного письма 1.' }
     ];
 
     // Функция для обновления списка писем в зависимости от поиска
