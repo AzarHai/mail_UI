@@ -1,0 +1,82 @@
+/* Ширина 50% */
+.w-50 {
+    width: 50%;
+}
+
+/* Отступ между кнопками, если Bootstrap gap недоступен */
+#profilePanel .settings-section .d-flex {
+    gap: 10px;
+}
+
+/* Альтернатива, если нет rounded-start/end */
+.rounded-start {
+    border-top-left-radius: 30px!important;
+    border-bottom-left-radius: 30px!important;
+}
+
+.rounded-end {
+    border-top-right-radius: 30px!important;
+    border-bottom-right-radius: 30px!important;
+}
+
+.custom-btn-height {
+    height: 80px; /* можно задать любую высоту */
+    line-height: 40px; /* для вертикального выравнивания текста */
+    font-size: 1rem;   /* можешь подстроить под нужный стиль */
+}
+/* Изменение цвета при наведении */
+.custom-btn-height:hover {
+    background-color: #444; /* Изменение фона на более светлый оттенок */
+    border-color: #444; /* Цвет границы при наведении */
+}
+
+/* Изменение цвета при фокусе (когда кнопка активна) */
+.custom-btn-height:focus {
+    background-color: #555; /* Темный фон при фокусе */
+    border-color: #555; /* Цвет границы при фокусе */
+    box-shadow: 0 0 0 3px rgba(85, 85, 85, 0.5); /* Эффект тени вокруг кнопки при фокусе */
+}
+/* Остальной CSS без изменений */
+.profile-panel {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 600px;
+    height: auto;
+    z-index: 1051;
+    transition: all 0.3s ease;
+    background-color: #333;
+    color: #d3d6d4;
+    border-radius: 20px;
+}
+
+.profile-panel img {
+    object-fit: cover;
+}
+
+.profile-panel .settings-section h6 {
+    border-top: 2px solid #b3b3b3;
+    padding-top: 10px;
+    margin-top: 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.3em;
+}
+
+#profilePanel .btn {
+    font-weight: 500;
+}
+
+/* Стили для белой кнопки закрытия */
+.white-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 1;
+}
+.white-close:hover {
+    filter: invert(1) grayscale(100%) brightness(150%);
+}
+#closeProfile {
+    font-size: 1.4em;  /* Увеличиваем размер шрифта */
+    width: 30px;       /* Ширина кнопки */
+    height: 30px;      /* Высота кнопки */
+    padding: 10px;     /* Внутренние отступы */
+}

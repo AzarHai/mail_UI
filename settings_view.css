@@ -1,0 +1,88 @@
+.settings-panel {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 450px;
+    height: 550px;
+    z-index: 1050;
+    transition: all 0.3s ease;
+    background-color: #d3d6d4; /* светло-серый фон */
+    color: #333;               /* чёрный текст */
+    border-radius: 20px !important;      /* мягкое закругление углов */
+}
+
+
+/* Стиль для круглых кнопок */
+.btn-circle {
+width: 25px;
+height: 25px;
+border-radius: 50%;
+margin-right: 10px;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #fff;
+border: 2px solid #000;
+cursor: pointer;
+}
+
+.btn-circle:hover {
+background-color: #d1d1d1;
+}
+
+.btn-circle.selected {
+background-color: #0d6efd; /* Зеленый для активного выбора */
+color: white;
+}
+
+/* Для вертикального расположения кнопок */
+.d-flex.flex-column {
+display: flex;
+flex-direction: column;
+gap: 10px; /* Расстояние между кнопками */
+}
+
+/* Стили для отображения картинок темы */
+.theme-option {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+/* Обеспечивает корректный перенос изображений на следующую строку */
+.d-flex.flex-wrap {
+flex-wrap: wrap; /* Включаем перенос элементов на следующую строку */
+}
+
+.theme-image {
+width: 80px; /* Размер картинки */
+height: 50px; /* Прямоугольные картинки */
+margin-right: 10px; /* Расстояние между картинкой и следующим элементом */
+object-fit: cover; /* Обеспечивает, чтобы изображение заполнило пространство */
+}
+
+/* Стили для разделов */
+.settings-section {
+margin-bottom: 20px; /* Отступ между разделами */
+padding-bottom: 10px;
+}
+
+/* Разделительная линия для каждого раздела */
+.settings-section h6 {
+border-top: 2px solid #b3b3b3; /* Линия над заголовком */
+padding-top: 10px; /* Отступ сверху */
+margin-top: 0; /* Убираем стандартный отступ сверху */
+}
+
+/* Позволяет менять шрифт для каждого раздела */
+.settings-section h6 {
+font-family: 'Arial', sans-serif; /* Пример шрифта, можно заменить */
+font-size: 1.3em;
+}
+
+/* Пример изменения шрифта для кнопок */
+.settings-section button {
+font-family: 'Verdana', sans-serif; /* Шрифт для кнопок */
+font-size: 1.3em;
+}

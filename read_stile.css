@@ -1,0 +1,75 @@
+    /* Стили для card-body со скроллом */
+    #mailBody {
+        max-height: 400px; /* можно поменять на нужную высоту */
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 15px; /* чтобы скролл не перекрывал контент */
+    }
+
+    /* Стилизация скроллбара для WebKit-браузеров */
+    #mailBody::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    #mailBody::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    #mailBody::-webkit-scrollbar-thumb {
+        background-color: #474747;
+        border-radius: 10px;
+    }
+
+    #mailBody::-webkit-scrollbar-thumb:hover {
+        background-color: #5e5e5e;
+    }
+
+    /* Firefox */
+    #mailBody {
+        scrollbar-width: thin;
+        scrollbar-color: #474747 transparent;
+    }
+    #topBackBtn:hover {
+        background-color: #c4c7c5; /* не меняем фон при наведении */
+    }
+    #topBackBtn:focus {
+        outline: none; /* убираем фокус */
+    }
+   /* Стили для кнопок "Ответить" и "Переслать" с серой обводкой и текстом */
+   #replyBtn, #forwardBtn {
+        color: #6c757d; /* Серая текстовая окраска */
+        border-color: #6c757d; /* Серая обводка */
+        margin-top: 60px;
+    }
+
+    #replyBtn:hover, #forwardBtn:hover {
+        background-color: #e2e6ea; /* Светлый фон при наведении */
+        color: #6c757d; /* Текст остаётся серым */
+    }
+
+    #replyBtn:focus, #forwardBtn:focus {
+        outline: none; /* Убираем фокус */
+    }
+
+    .d-flex {
+        justify-content: start; /* Выравниваем кнопки влево */
+    }
+
+    /* Убираем большие отступы между кнопками */
+    #replyBtn {
+        margin-right: 10px; /* добавим небольшой отступ справа от кнопки "Ответить" */
+    }
+
+    #replyBtn:hover, #forwardBtn:hover {
+        background-color: #c4c7c5;
+    }
+
+    #replyBtn:focus, #forwardBtn:focus {
+        outline: none;
+    }
+    /* Стили для футера */
+    .card-footer {
+        height: 20px;
+        font-size: 1rem;
+        color: #6c757d;
+    }

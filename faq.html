@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Почта</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="stile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="modal_stile.css">
+    <link rel="stylesheet" href="read_stile.css">
+    <link rel="stylesheet" href="settings_view.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="faq.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <nav class="navbar navbar-light px-3">
+    <a class="navbar-brand ms-4" href="index.html">
+        <img src="images/letter-a.png" alt="Почта" >
+    </a>
+    <div>
+        <button class="btn btn-outline-secondary me-2" id="settingsBtn">
+            <i class="bi bi-gear"></i>
+        </button>
+        <button id="profileButton" class="btn btn-outline-secondary">
+            <i class="bi bi-person-circle"></i>
+        </button>
+    </div>
+</nav>
+<!-- Окно профиля -->
+<div id="profilePanel" class="profile-panel d-none shadow p-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="w-100 text-center mb-0" style="font-size: 1.5em;"><strong>Email:</strong> ivan@example.com</p>
+        <button id="closeProfile" class="btn btn-sm btn-close white-close position-absolute" style="top: 10px; right: 10px;" aria-label="Закрыть"></button>
+    </div>
+
+    <div class="settings-section text-center">
+        <!-- Иконка профиля -->
+        <div class="my-3">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Аватар" width="80" height="80" class="rounded-circle border shadow-sm">
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <div class="d-flex justify-content-between gap-2">
+            <!-- Левая кнопка с округлением слева -->
+            <button class="btn btn-dark btn-sm w-50 rounded-start custom-btn-height">Изменить пароль</button>
+            <!-- Правая кнопка с округлением справа -->
+            <button class="btn btn-dark btn-sm w-50 rounded-end custom-btn-height">Выйти</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="settingsPanel" class="settings-panel d-none shadow rounded p-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0" style="font-size: 1.5em;font-weight: normal;">Быстрые настройки</h5>
+        <button id="closeSettings" class="btn btn-sm btn-close" aria-label="Закрыть"></button>
+    </div>
+    <!-- Секция "Тип интерфейса" -->
+    <div class="settings-section">
+        <h6>Тип интерфейса</h6>
+        <div class="d-flex flex-column">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-circle" id="defaultInterface">
+                    <div class="inner-circle"></div>
+                </button>
+                <label for="defaultInterface" class="ml-2" style="font-size: 1.4em;">По умолчанию</label>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-circle" id="compactInterface">
+                    <div class="inner-circle"></div>
+                </button>
+                <label for="compactInterface" class="ml-2"style="font-size: 1.4em;">Компактный</label>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-circle" id="regularInterface">
+                    <div class="inner-circle"></div>
+                </button>
+                <label for="regularInterface" class="ml-2"style="font-size: 1.4em;">Обычный</label>
+            </div>
+        </div>
+    </div>
+    <!-- Секция "Тема интерфейса" -->
+    <div class="settings-section">
+        <h6>Тема интерфейса</h6>
+        <div class="d-flex flex-wrap align-items-center">
+            <div class="theme-option" id="lightTheme">
+                <img src="images/white_theme.jpg" alt="Светлая тема" class="theme-image">
+            </div>
+            <div class="theme-option" id="darkTheme">
+                <img src="images/pink_theme.jpg" alt="Тёмная тема" class="theme-image">
+            </div>
+            <div class="theme-option" id="yellowTheme">
+                <img src="images/yellow_theme.png" alt="Желтая тема" class="theme-image">
+            </div>
+            <div class="theme-option" id="blueTheme">
+                <img src="images/bllue_theme.jpg" alt="Синяя тема" class="theme-image">
+            </div>
+            <div class="theme-option" id="greenTheme">
+                <img src="images/green_theme.jpg" alt="Зеленая тема" class="theme-image">
+            </div>
+        </div>
+    </div>
+    <!-- Секция "Раздел помощи" -->
+    <div class="settings-section">
+        <h6>Раздел помощи</h6>
+        <button class="btn btn-outline-primary btn-sm"id="faqBtn">FAQ</button>
+    </div>
+</div>
+<!-- FAQ секция -->
+<h2 class="text-center mt-3">FAQ</h2>
+<div class="container my-4">
+    <div class="accordion" id="faqAccordion">
+
+        <!-- Отправка письма -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    Как отправить новое письмо?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Чтобы отправить письмо, выполните следующие шаги:
+                    <ol>
+                        <li>Нажмите кнопку <strong>"Создать письмо"</strong> в верхней панели.</li>
+                        <li>Введите <strong>адрес получателя</strong> (например: user@example.com).</li>
+                        <li>Заполните поле <strong>тема письма</strong>.</li>
+                        <li>Введите <strong>текст письма</strong> в большом текстовом поле.</li>
+                        <li>Нажмите кнопку <strong>"Отправить"</strong>.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Поиск -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    Как найти письмо?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Используйте строку поиска для поиска письма:
+                    <ol>
+                        <li>Перейдите в нужную папку (например, "Входящие" или "Отправленные").</li>
+                        <li>В верхней части экрана найдите строку поиска.</li>
+                        <li>Введите ключевые слова: <em>тему письма, адрес отправителя или часть текста письма</em>.</li>
+                        <li>Результаты отобразятся в списке ниже.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Удалённые письма -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                    Где находятся удаленные письма?
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Удалённые письма можно найти следующим образом:
+                    <ol>
+                        <li>Откройте левую боковую панель.</li>
+                        <li>Нажмите на папку <strong>"Удалённые"</strong>.</li>
+                        <li>Здесь будут отображаться все письма, которые вы удалили вручную.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Восстановление писем -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                    Можно ли восстановить удаленное письмо?
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Да, для восстановления удалённого письма:
+                    <ol>
+                        <li>Перейдите в папку <strong>"Удалённые"</strong>.</li>
+                        <li>Откройте нужное письмо.</li>
+                        <li>Нажмите кнопку <strong>"Восстановить"</strong> или переместите письмо в другую папку.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Смена пароля -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                    Как изменить пароль?
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Чтобы изменить пароль:
+                    <ol>
+                        <li>Нажмите на иконку профиля в правом верхнем углу.</li>
+                        <li>Выберите <strong>"Изменить пароль"</strong>.</li>
+                        <li>Введите старый пароль, затем новый.</li>
+                        <li>Подтвердите новый пароль и нажмите <strong>"Сохранить"</strong>.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Настройка интерфейса -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+                    Как изменить внешний вид интерфейса?
+                </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Чтобы выбрать стиль интерфейса:
+                    <ol>
+                        <li>Нажмите на иконку <strong>настроек (шестерёнка)</strong> в правом верхнем углу.</li>
+                        <li>Выберите один из стилей: <em>По умолчанию, Компактный, Обычный</em>.</li>
+                        <li>Нажмите на нужный вариант, изменения применятся автоматически.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Смена темы -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven">
+                    Как изменить тему оформления?
+                </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    Чтобы выбрать цветовую тему:
+                    <ol>
+                        <li>Откройте панель <strong>настроек</strong>.</li>
+                        <li>В разделе <strong>"Тема интерфейса"</strong> выберите один из вариантов:</li>
+                        <ul>
+                            <li>Светлая</li>
+                            <li>Тёмная</li>
+                            <li>Жёлтая</li>
+                            <li>Синяя</li>
+                            <li>Зелёная</li>
+                        </ul>
+                        <li>Щелкните по миниатюре темы — она применится сразу.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Открытие/закрытие панели настроек
+    const settingsBtn = document.getElementById("settingsBtn");
+    const settingsPanel = document.getElementById("settingsPanel");
+    
+    settingsBtn.addEventListener("click", () => {
+        settingsPanel.classList.toggle("d-none");
+    });
+    document.getElementById('closeSettings').addEventListener('click', () => {
+        settingsPanel.classList.add('d-none');
+    });
+    
+    // Переключение типа интерфейса
+    document.getElementById('defaultInterface').addEventListener('click', () => {
+        document.getElementById('defaultInterface').classList.add('selected');
+        document.getElementById('compactInterface').classList.remove('selected');
+        document.getElementById('regularInterface').classList.remove('selected');
+        console.log('Тип интерфейса: По умолчанию');
+    });
+    
+    document.getElementById('compactInterface').addEventListener('click', () => {
+        document.getElementById('compactInterface').classList.add('selected');
+        document.getElementById('defaultInterface').classList.remove('selected');
+        document.getElementById('regularInterface').classList.remove('selected');
+        console.log('Тип интерфейса: Компактный');
+    });
+    
+    document.getElementById('regularInterface').addEventListener('click', () => {
+        document.getElementById('regularInterface').classList.add('selected');
+        document.getElementById('defaultInterface').classList.remove('selected');
+        document.getElementById('compactInterface').classList.remove('selected');
+        console.log('Тип интерфейса: Обычный');
+    });
+    
+    // Открытие и закрытие панели профиля
+    document.addEventListener('DOMContentLoaded', function () {
+        const profilePanel = document.getElementById('profilePanel');
+        const closeProfileBtn = document.getElementById('closeProfile');
+        const profileButton = document.getElementById('profileButton');
+    
+        profileButton.addEventListener('click', function (event) {
+            event.stopPropagation();
+            profilePanel.classList.remove('d-none');
+        });
+    
+        closeProfileBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            profilePanel.classList.add('d-none');
+        });
+    
+        document.body.addEventListener('click', function (event) {
+            if (!profilePanel.contains(event.target) && event.target !== profileButton && event.target !== closeProfileBtn) {
+                profilePanel.classList.add('d-none');
+            }
+        });
+    });
+    
+    // Переход в раздел FAQ из настроек
+    document.getElementById('faqBtn').addEventListener('click', () => {
+        window.location.href = 'faq.html';
+    });
+    </script>
+</body>
+</html>

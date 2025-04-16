@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Почта</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="stile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="modal_stile.css">
+    <link rel="stylesheet" href="read_stile.css">
+    <link rel="stylesheet" href="settings_view.css">
+    <link rel="stylesheet" href="profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Верхняя панель -->
+    <nav class="navbar navbar-light px-3">
+    <button class="btn btn-outline-secondary btn-collapse" id="collapseButton"><i class="bi bi-list"></i></button>
+    <a class="navbar-brand ms-4" href="index.html">
+        <img src="images/letter-a.png" alt="Почта" >
+    </a>
+    <div>
+        <button class="btn btn-outline-secondary me-2" id="settingsBtn">
+            <i class="bi bi-gear"></i>
+        </button>
+        <button id="profileButton" class="btn btn-outline-secondary">
+            <i class="bi bi-person-circle"></i>
+        </button>
+    </div>
+</nav>
+<!-- Окно профиля -->
+<div id="profilePanel" class="profile-panel d-none shadow p-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <p class="w-100 text-center mb-0" style="font-size: 1.5em;"><strong>Email:</strong> ivan@example.com</p>
+        <button id="closeProfile" class="btn btn-sm btn-close white-close position-absolute" style="top: 10px; right: 10px;" aria-label="Закрыть"></button>
+    </div>
+
+    <div class="settings-section text-center">
+        <!-- Иконка профиля -->
+        <div class="my-3">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Аватар" width="80" height="80" class="rounded-circle border shadow-sm">
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <div class="d-flex justify-content-between gap-2">
+            <!-- Левая кнопка с округлением слева -->
+            <button class="btn btn-dark btn-sm w-50 rounded-start custom-btn-height">Изменить пароль</button>
+            <!-- Правая кнопка с округлением справа -->
+            <button class="btn btn-dark btn-sm w-50 rounded-end custom-btn-height">Выйти</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="settingsPanel" class="settings-panel d-none shadow rounded p-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0" style="font-size: 1.5em;font-weight: normal;">Быстрые настройки</h5>
+        <button id="closeSettings" class="btn btn-sm btn-close" aria-label="Закрыть"></button>
+    </div>
+    <!-- Секция "Тип интерфейса" -->
+    <div class="settings-section">
+        <h6>Тип интерфейса</h6>
+        <div class="d-flex flex-column">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-circle" id="defaultInterface">
+                    <div class="inner-circle"></div>
+                </button>
+                <label for="defaultInterface" class="ml-2" style="font-size: 1.4em;">По умолчанию</label>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-circle" id="compactInterface">
+                    <div class="inner-circle"></div>
+                </button>
+                <label for="compactInterface" class="ml-2"style="font-size: 1.4em;">Компактный</label>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-circle" id="regularInterface">
+                    <div class="inner-circle"></div>
+                </button>
+                <label for="regularInterface" class="ml-2"style="font-size: 1.4em;">Обычный</label>
+            </div>
+        </div>
+    </div>
+    <!-- Секция "Тема интерфейса" -->
+    <div class="settings-section">
+        <h6>Тема интерфейса</h6>
+        <div class="d-flex flex-wrap align-items-center">
+            <div class="theme-option" id="lightTheme">
+                <img src="images/white_theme.jpg" alt="Светлая тема" class="theme-image">
+            </div>
+            <div class="theme-option" id="darkTheme">
+                <img src="images/pink_theme.jpg" alt="Тёмная тема" class="theme-image">
+            </div>
+            <div class="theme-option" id="yellowTheme">
+                <img src="images/yellow_theme.png" alt="Желтая тема" class="theme-image">
+            </div>
+            <div class="theme-option" id="blueTheme">
+                <img src="images/bllue_theme.jpg" alt="Синяя тема" class="theme-image">
+            </div>
+            <div class="theme-option" id="greenTheme">
+                <img src="images/green_theme.jpg" alt="Зеленая тема" class="theme-image">
+            </div>
+        </div>
+    </div>
+    <!-- Секция "Раздел помощи" -->
+    <div class="settings-section">
+        <h6>Раздел помощи</h6>
+        <button class="btn btn-outline-primary btn-sm"id="faqBtn">FAQ</button>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Боковая панель -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar py-3" id="sidebar">
+            <div class="position-sticky">
+                <button class="btn btn-danger w-100 mb-3" id="writeBtn">
+                    <i class="bi bi-pencil-square sidebar-icon"></i>
+                    <span class="sidebar-text">Написать</span>
+                </button>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" id="inboxTab">
+                            <i class="bi bi-inbox sidebar-icon"></i>
+                            <span>Входящие</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="sentTab">
+                            <i class="bi bi-box-arrow-up-right sidebar-icon"></i>
+                            <span>Отправленные</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="draftsTab">
+                            <i class="bi bi-file-earmark-text sidebar-icon"></i>
+                            <span>Черновики</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="spamTab">
+                            <i class="bi bi-exclamation-triangle sidebar-icon"></i>
+                            <span>Спам</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="trashTab">
+                            <i class="bi bi-trash sidebar-icon"></i>
+                            <span>Корзина</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="col-md-9 col-lg-10 px-md-4">
+            <h3 id="folderTitle" class="mt-4 mb-3">Входящие</h3>
+                <div class="list-group" id="mailList">
+                
+            </div>
+
+<!-- Окно чтения письма -->
+<div id="readMail" style="display: none; color: black;">
+    <div class="card mt-3 border-0"style="border-radius: 30px;">
+        <!-- Верхняя панель с кнопкой "Вернуться" -->
+        <div class="card-header d-flex justify-content-start align-items-center" style="background-color: #474747;height: 60px;">
+            <button class="btn btn-sm" id="topBackBtn" style="background-color: #474747; border: none;">
+                <i class="bi bi-arrow-left" style="color: white; font-size: 1.5rem;"></i>
+            </button>
+        </div>
+
+        <!-- Содержимое письма -->
+<div class="card-body" id="mailBody">
+    <!-- Тема письма -->
+    <div class="mb-3">
+        <h5 class="mb-0">Тема письма</h5>
+    </div>
+
+    <!-- Отправитель -->
+    <div class="mb-3">
+        <h6><strong>От:</strong> <span id="sender">example@mail.com</span></h6>
+    </div>
+
+    <!-- Основной текст -->
+    <div>
+        <p id="mailContent">
+            Здесь отображается содержимое письма. Его можно подставлять динамически.
+        </p>
+    </div>
+    <!-- Кнопки Ответить и Переслать -->
+    
+</div>
+        <!-- Футер -->
+        <div class="card-footer text-center mt-3" style="background-color: #474747;">
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для написания письма -->
+<div class="modal fade" id="writeModal" tabindex="-1" aria-labelledby="writeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg-custom">
+        <div class="modal-content modal-content-custom">
+            <div class="modal-header">
+                <h5 class="modal-title" id="writeModalLabel">Написать письмо</h5>
+
+                <!-- Кнопка закрыть модальное окно -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalBtn"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!-- Поле для ввода адресата -->
+                    <div class="mb-1">
+                        <input type="email" class="form-control custom-placeholder" id="recipient" placeholder="Введите email получателя">
+                    </div>
+                    <!-- Поле для ввода темы -->
+                    <div class="mb-0">
+                        <input type="text" class="form-control custom-placeholder" id="subject" placeholder="Тема письма">
+                    </div>
+                    <!-- Поле для ввода сообщения -->
+                    <div class="flex-grow-1 d-flex">
+                        <textarea class="form-control message-area flex-grow-1" id="message" placeholder=""></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-start gap-2">
+                <button type="button" class="btn btn-primary send-btn"id="sendBtn">Отправить</button>
+
+                <!-- Кнопка прикрепить файл -->
+                <button type="button" class="btn btn-light icon-btn attach-btn" title="Прикрепить файл">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <input type="file" id="fileInput" style="display: none;">
+                <span id="fileNameDisplay" class="text-muted"></span>
+
+                <!-- Кнопка смайлик -->
+                <button type="button" class="btn btn-light icon-btn" title="Смайлик" id="emojiBtn">
+                    <i class="far fa-smile"></i>
+                </button>
+
+                <!-- Скрытое меню для выбора смайликов -->
+                <div id="emojiPicker" class="emoji-picker" style="display: none;">
+                    <button type="button" class="emoji-btn">😊</button>
+                    <button type="button" class="emoji-btn">😂</button>
+                    <button type="button" class="emoji-btn">😍</button>
+                    <button type="button" class="emoji-btn">😎</button>
+                    <button type="button" class="emoji-btn">😢</button>
+                    <button type="button" class="emoji-btn">😡</button>
+                </div>
+
+                <!-- Кнопка добавить фото -->
+                <button type="button" class="btn btn-light icon-btn add-photo-btn" title="Добавить фото">
+                    <i class="fas fa-image"></i>
+                </button>
+                <input type="file" id="photoInput" accept="image/*" style="display: none;">
+
+                <!-- Кнопка корзина (удалить черновик) -->
+                <button type="button" class="btn btn-light icon-btn" title="Удалить черновик" id="deleteDraftBtn">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+
+            <!-- Превью изображения -->
+            <div id="photoPreviewContainer" style="margin-top: 10px;">
+                <img id="photoPreview" src="" alt="Превью фото" style="max-width: 200px; display: none; border-radius: 8px;"/>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Модальное окно "Отправлено" -->
+<div class="modal fade" id="sentModal" tabindex="-1" aria-labelledby="sentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <!-- Измененный цвет текста на черный -->
+                <h5 style="color: black;">Отправлено</h5>
+                <!-- Кнопка Ок синего цвета -->
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ок</button>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    /* Стиль для модального окна "Отправлено" */
+    #sentModal .modal-body {
+        padding: 20px;
+    }
+
+    #sentModal h5 {
+        margin: 0;
+        font-size: 20px;
+        color: black; /* Черный цвет текста */
+    }
+
+    #sentModal .btn-primary {
+        background-color: #007bff; /* Синий цвет кнопки */
+        border-color: #007bff; /* Синий цвет границы кнопки */
+    }
+
+    #sentModal .btn-primary:hover {
+        background-color: #0056b3; /* Более темный синий при наведении */
+        border-color: #0056b3; /* Более темный синий при наведении */
+    }
+</style>
+<!-- Поисковая строка -->
+<form class="d-flex navbar-search">
+    <i class="bi bi-search search-icon"></i> <!-- Иконка лупы -->
+    <input  class="form-control me-2" type="search" placeholder="Поиск в почте" aria-label="Поиск">
+    <button type="button" class="btn btn-link text-white ms-2 search-settings-btn">
+        <!--i class="bi bi-sliders"></i--> 
+    </button>
+</form>
+<script src="main_buttons.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebar = document.getElementById('sidebar');
+        const tabs = sidebar.querySelectorAll('.nav-link');
+        const mailList = document.getElementById('mailList');
+        const folderTitle = document.getElementById('folderTitle');
+        const searchInput = document.querySelector('input[type="search"]');
+    
+        const mails = [
+            { id: 1, subject: 'Входящее письмо 1', sender: 'sender1@example.com', content: 'Это содержимое входящего письма 1.' },
+            { id: 2, subject: 'Входящее письмо 2', sender: 'sender2@example.com', content: 'Это содержимое входящего письма 2.' },
+            { id: 3, subject: 'Отправленное письмо 1', sender: 'sender3@example.com', content: 'Это содержимое отправленного письма 1.' },
+            { id: 4, subject: 'Черновик 1', sender: 'sender4@example.com', content: 'Это содержимое черновика 1.' },
+            { id: 5, subject: 'Спам письмо 1', sender: 'sender5@example.com', content: 'Это содержимое письма из спама.' },
+            { id: 6, subject: 'Удаленное письмо 1', sender: 'sender6@example.com', content: 'Это содержимое удаленного письма 1.' }
+        ];
+    
+        function updateMailList(folderId) {
+            mailList.innerHTML = '';
+            folderTitle.style.display = 'block';
+    
+            let filtered = [];
+            switch (folderId) {
+                case 'inboxTab':
+                    folderTitle.textContent = 'Входящие';
+                    filtered = mails.filter(m => m.id <= 2);
+                    break;
+                case 'sentTab':
+                    folderTitle.textContent = 'Отправленные';
+                    filtered = mails.filter(m => m.id === 3);
+                    break;
+                case 'draftsTab':
+                    folderTitle.textContent = 'Черновики';
+                    filtered = mails.filter(m => m.id === 4);
+                    break;
+                case 'spamTab':
+                    folderTitle.textContent = 'Спам';
+                    filtered = mails.filter(m => m.id === 5);
+                    break;
+                case 'trashTab':
+                    folderTitle.textContent = 'Удаленные';
+                    filtered = mails.filter(m => m.id === 6);
+                    break;
+            }
+    
+            filtered.forEach(mail => {
+                const mailItem = document.createElement('a');
+                mailItem.className = 'list-group-item list-group-item-action d-flex align-items-center';
+                mailItem.setAttribute('data-mail-id', mail.id);
+                mailItem.innerHTML = `
+                    <input type="checkbox" class="form-check-input me-3">
+                    <label>${mail.subject}</label>
+                `;
+                mailList.appendChild(mailItem);
+            });
+        }
+    
+        function openMail(mailId) {
+            const mail = mails.find(m => m.id == mailId);
+            if (!mail) return;
+    
+            const mailBody = document.getElementById('mailBody');
+            mailBody.innerHTML = `
+                <div class="mb-3">
+                    <h5 class="mb-0">${mail.subject}</h5>
+                </div>
+                <div class="mb-3">
+                    <h6><strong>От:</strong> <span id="sender">${mail.sender}</span></h6>
+                </div>
+                <div>
+                    <p id="mailContent">${mail.content}</p>
+                </div>
+                <div class="d-flex justify-content-start mt-3">
+                    <button class="btn btn-outline-primary me-2" id="replyBtn">Ответить</button>
+                    <button class="btn btn-outline-primary" id="forwardBtn">Переслать</button>
+                </div>
+            `;
+    
+            document.getElementById('readMail').style.display = 'block';
+            document.getElementById('mailList').style.display = 'none';
+    
+            // Вставка обработчиков
+            document.getElementById('replyBtn').addEventListener('click', function () {
+                document.getElementById('recipient').value = mail.sender;
+                document.getElementById('subject').value = 'Re: ' + mail.subject;
+                document.getElementById('message').value = '\n\n--- Исходное сообщение ---\n' + mail.content;
+    
+                const writeModal = new bootstrap.Modal(document.getElementById('writeModal'));
+                writeModal.show();
+            });
+    
+            document.getElementById('forwardBtn').addEventListener('click', function () {
+                document.getElementById('recipient').value = '';
+                document.getElementById('subject').value = 'Fwd: ' + mail.subject;
+                document.getElementById('message').value = '\n\n--- Пересылаемое сообщение ---\nОт: ' + mail.sender + '\n' + mail.content;
+    
+                const writeModal = new bootstrap.Modal(document.getElementById('writeModal'));
+                writeModal.show();
+            });
+        }
+    
+        sidebar.addEventListener('click', function (e) {
+            const link = e.target.closest('.nav-link');
+            if (!link) return;
+    
+            tabs.forEach(tab => tab.classList.remove('active'));
+            link.classList.add('active');
+            updateMailList(link.id);
+    
+            document.getElementById('readMail').style.display = 'none';
+            document.getElementById('mailList').style.display = 'block';
+        });
+    
+        mailList.addEventListener('click', function (e) {
+            const mailItem = e.target.closest('.list-group-item');
+            if (mailItem) {
+                openMail(mailItem.getAttribute('data-mail-id'));
+            }
+        });
+    
+        document.getElementById('topBackBtn').addEventListener('click', function () {
+            document.getElementById('readMail').style.display = 'none';
+            document.getElementById('mailList').style.display = 'block';
+        });
+    
+        searchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const q = searchInput.value.trim().toLowerCase();
+                const filtered = mails.filter(mail =>
+                    mail.subject.toLowerCase().includes(q) ||
+                    mail.sender.toLowerCase().includes(q) ||
+                    mail.content.toLowerCase().includes(q)
+                );
+    
+                mailList.innerHTML = '';
+                if (filtered.length > 0) {
+                    folderTitle.style.display = 'none';
+                    filtered.forEach(mail => {
+                        const item = document.createElement('a');
+                        item.className = 'list-group-item list-group-item-action d-flex align-items-center';
+                        item.setAttribute('data-mail-id', mail.id);
+                        item.innerHTML = `
+                            <input type="checkbox" class="form-check-input me-3">
+                            <label>${mail.subject}</label>
+                        `;
+                        mailList.appendChild(item);
+                    });
+                } else {
+                    folderTitle.textContent = 'Ничего не найдено';
+                    folderTitle.style.display = 'block';
+                }
+            }
+        });
+    
+        // Инициализация при загрузке
+        updateMailList('inboxTab');
+    });
+    </script>
+    
+<script src="footer.js"></script>
+
+</body>
+</html>

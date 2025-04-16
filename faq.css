@@ -1,0 +1,67 @@
+    /* Общий стиль для кнопок аккордеона */
+    .accordion-button {
+        background-color: #2e2e2e; /* темный фон */
+        color: white;              /* белый текст */
+        border: none;             /* убираем границу */
+    }
+
+    /* Состояние свернуто (collapsed) — такие же стили */
+    .accordion-button.collapsed {
+        background-color: #2e2e2e;
+        color: white;
+        border: none;
+    }
+
+    /* Убираем фокусный эффект */
+    .accordion-button:focus {
+        box-shadow: none;
+    }
+
+    /* Стили для контента при раскрытии */
+    .accordion-body {
+        background-color: #2e2e2e; /* тот же фон */
+        color: white;              /* белый текст */
+        border-top: none;          /* убираем верхнюю границу */
+    }
+
+    /* Убираем границы у всей "accordion-item" */
+    .accordion-item {
+        border: none;
+    }
+
+    /* Сдвиг заголовка вверх */
+    h2.text-center.mt-3 {
+        margin-top: 1rem !important;
+    }
+
+/* Стрелочка (иконка раскрытия) — белая */
+.accordion-button::after {
+    filter: brightness(0) invert(1); /* делает стрелку белой */
+}
+
+/* Стрелочка в состоянии раскрытия — белая */
+.accordion-button:not(.collapsed)::after {
+    filter: brightness(0) invert(1);
+}
+
+
+/* Убираем фокусный эффект */
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+/* Убираем белый фон у активной вкладки */
+.accordion-button:not(.collapsed) {
+    background-color: #2e2e2e;
+    color: white;
+}
+/* Увеличение размера текста заголовков FAQ */
+.accordion-button {
+    font-size: 1.3rem; /* Было по умолчанию около 1rem */
+}
+
+/* Увеличение размера текста тела FAQ */
+.accordion-body {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}

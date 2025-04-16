@@ -1,0 +1,158 @@
+.send-btn {
+    padding: 10px 30px;
+    font-size: 1.5rem;
+    border-radius: 30px;
+    background-color: #0078D4; /* Можно изменить цвет */
+    border: none;
+    box-shadow: none;
+}
+
+.send-btn:hover {
+    background-color: #0078D4;
+}
+
+.modal-footer {
+    padding-left: 15px; /* Чуть подвинуть от левого края */
+}
+.modal-header {
+    background-color: #d1d1d1; /* Светло-серый фон */
+    border-top-left-radius: 20px; /* Закругление сверху слева */
+    border-top-right-radius: 20px; /* Закругление сверху справа */
+}
+
+    /* Стиль для заголовка модального окна */
+    .modal-header .modal-title {
+        color: #2e2e2e; /* Цвет текста заголовка */
+        font-weight: bold; /* Жирный шрифт для заголовка */
+        padding-left: 20px; /* Отступ слева */
+    }
+    /* Стили для полей ввода (адресат и тема) */
+    .custom-placeholder {
+        border: none; /* Убираем все границы, кроме нижней */
+        border-bottom: 1px solid #ced4da; /* Нижняя граница */
+        background-color: transparent; /* Прозрачный фон */
+        margin-top: 0; /* Убираем отступ сверху */
+        padding-left: 0; /* Убираем отступ слева */
+        padding-right: 0; /* Убираем отступ справа */
+        padding-bottom: 0px; /* Убираем расстояние между текстом и линией */
+        border-radius: 0; /* Убираем закругление */
+        width: calc(100% - 30px); /* Растягиваем границу почти на весь контейнер с отступом 15px */
+    }
+
+    /* Стили при фокусе на полях ввода */
+    .custom-placeholder:focus {
+        outline: none; /* Убираем стандартную рамку при фокусе */
+        border-bottom: 1px solid #ced4da; /* Изменение цвета нижней границы при фокусе */
+        box-shadow: none; /* Убираем тень при фокусе */
+    }
+
+    /* Стили для поля ввода сообщения */
+    .custom-placeholder::placeholder {
+        color: #2e2e2e; /* Цвет текста плейсхолдера */
+        font-size: 1.2rem;
+    }
+
+    /* Кастомные стили для увеличения размера модального окна */
+    .modal-lg-custom {
+        max-width: 80%; /* Увеличиваем ширину модального окна */
+        width: 80%; /* Устанавливаем фиксированную ширину */
+        height: 80%; /* Увеличиваем высоту модального окна */
+    }
+
+    .modal-content-custom {
+        min-height: 800px; /* Увеличиваем минимальную высоту содержимого модального окна */
+    }
+
+    .modal-dialog {
+    height: 80%;
+}
+
+.modal-content-custom {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+    border-radius: 20px; /* Закругление углов */
+    overflow: hidden;    /* Контроль за внутренним содержимым */
+}
+
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.message-area {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    flex-grow: 1;
+    min-height: 0; /* Важно: позволяет flex работать корректно */
+    
+}
+.message-area:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+.icon-btn {
+    padding: 10px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    font-size: 1.5rem;
+    color: #333;
+    background-color:#ffffff;
+}
+
+.icon-btn:hover {
+    background-color: #e2e2e2;
+    color: #0d6efd;
+}
+#readMail {
+    color: black;
+}
+/* Стили для основного контента, когда боковое меню свернуто */
+#sidebar.collapsed + main {
+    width: calc(100% - 80px); /* Увеличиваем ширину основного контента */
+}
+
+/* Стили для основного контента, когда боковое меню не свернуто */
+main {
+    transition: width 0.3s; /* Плавное изменение ширины */
+}
+.emoji-picker {
+    display: flex;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 40px;
+    z-index: 10;
+}
+
+.emoji-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
